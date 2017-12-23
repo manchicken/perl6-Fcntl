@@ -9,7 +9,7 @@ class Build {
     #| Sets up a C<Makefile> and runs C<make>.  C<$folder> should be
     #| C<"$folder/resources/lib"> and C<$libname> should be the name of the library
     #| without any prefixes or extensions.
-    sub make(Str $folder, Str $destfolder) {
+    sub make(Str $folder, Str $destfolder, :$outname) {
         my %vars = LibraryMake::get-vars($destfolder);
 
         mkdir($destfolder);
@@ -17,15 +17,15 @@ class Build {
         shell(%vars<MAKE>);
     }
 
+
     method build($workdir) {
-        my $destdir = 'resources/bin';
-        my $pmdir = 'lib';
-        mkdir $destdir;
-        mkdir $pmdir;
-        make($workdir, "$destdir");
-        copy("Fcntl.prefix.pm", "Fcntl.pm");
-        shell("$destdir/P6-Fcntl");
-        move("Fcntl.pm", "$pmdir/Fcntl.pm");
+        for <lib resources/bin resources/lib> -> $dir-to-make {
+          mkdir $dir-to-make;
+        }
+
+        for <resources/lib libjust-for-tests resources/bin P6-Fcntl> -> $dir, $obj {
+          make($workdir, $dir, :outname($obj));
+        }
     }
 }
 

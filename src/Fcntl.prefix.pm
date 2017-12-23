@@ -1,5 +1,7 @@
 use v6.c;
 
+=begin pod
+
 =head1 NAME
 
 Fcntl - load the C Fcntl.h defines
@@ -54,5 +56,7 @@ See L<perlfunc/seek> and L<perlfunc/sysseek> about the SEEK_* constants.
 See L<perlfunc/stat> about the S_I* constants.
 
 =cut
+
+=end pod
 
 unit module Fcntl:ver<0.1.0>:auth<Mike Stemle, Jr. (themanchicken@gmail.com)>;
