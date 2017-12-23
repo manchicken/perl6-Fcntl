@@ -1,0 +1,20 @@
+{
+  "authors"       : [ "manchicken" ],
+  "perl"          : "6.*",
+  "name"          : "Fcntl",
+  "tags"          : [ "Fcntl" ],
+  "version"       : "0.0.1",
+  "auth"          : "github:manchicken",
+  "description"   : "A bunch of samples having to do with simple struct examples.",
+  "source-url"    : "git@github.com:manchicken/perl6-Fcntl.git",
+  "depends"       : [
+    "LibraryMake",
+    "NativeCall"
+  ],
+  "build-depends" : [ ],
+  "test-depends"  : [ ],
+  "provides"      : {
+      "Fcntl" : "lib/Fcntl.pm"
+  },
+  "resources" : []
+}

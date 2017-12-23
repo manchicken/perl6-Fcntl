@@ -1,0 +1,17 @@
+SRC=src
+LD=-lc
+all : bin
+
+bin : resources/bin/P6-Fcntl%EXE%
+
+resources/bin/P6-Fcntl%EXE% : $(SRC)/P6-Fcntl.c
+	%CC% -I $(SRC) %CCFLAGS% %CCOUT%resources/bin/P6-Fcntl%EXE% $(SRC)/P6-Fcntl.c
+
+test : all
+	@prove -e"perl6 -I lib" -v t
+
+clean :
+	@rm -f $(SRC)/*.o resources/bin/P6-Fcntl%EXE%
+
+realclean : clean
+	@rm -f Makefile
