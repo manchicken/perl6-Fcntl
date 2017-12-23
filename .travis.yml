@@ -7,7 +7,7 @@ os:
 perl6:
   - latest
 
-sudo: false
+sudo: true
 
 install:
   - rakudobrew build zef
