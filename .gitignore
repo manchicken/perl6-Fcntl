@@ -1,4 +1,6 @@
 *.o
+*.so
+*.dylib
 
 # Devel::NYTProf
 nytprof.out
@@ -6,4 +8,7 @@ nytprof.out
 # Zef build
 /Makefile
 
-lib/.precomp
+.precomp
+resources
+lib/Fcntl.pm
+src/P6-Fcntl
