@@ -3,15 +3,15 @@ LD=-lc
 all : bin lib pm
 
 bin : resources/bin/P6-Fcntl%EXE%
-lib : resources/lib/libjust-for-tests%SO%
+lib : resources/lib/libjustfortests%SO%
 pm : lib/Fcntl.pm
 
 resources/bin/P6-Fcntl%EXE% : $(SRC)/P6-Fcntl.c
 	%CC% -I $(SRC) %CCFLAGS% %CCOUT%resources/bin/P6-Fcntl%EXE% $(SRC)/P6-Fcntl.c
 
-resources/lib/libjust-for-tests%SO% : $(SRC)/just-for-tests%O% $(SRC)/P6-Fcntl%O%
+resources/lib/libjustfortests%SO% : $(SRC)/just-for-tests%O% $(SRC)/P6-Fcntl%O%
 	%LD% %LDSHARED% -v %LDFLAGS% \
-		%LDOUT%resources/lib/libjust-for-tests%SO% \
+		%LDOUT%resources/lib/libjustfortests%SO% \
 		$(SRC)/just-for-tests%O% \
 		$(SRC)/P6-Fcntl%O% \
 		$(LD)

@@ -17,7 +17,7 @@ subtest {
 
 subtest {
   plan 143;
-  my sub verify_one_named_value(Str, longlong --> Str) is native('just-for-tests') { * }
+  my sub verify_one_named_value(Str, longlong --> Str) is native('justfortests') { * }
 
   for Fcntl::.kv -> $name, $value {
     next if $name eq 'EXPORT';
