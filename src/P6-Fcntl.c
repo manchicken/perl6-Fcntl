@@ -1319,7 +1319,6 @@ struct definition_pair definitions[] = {
 };
 
 int main() {
-  char buff[1024];
   struct definition_pair *one = definitions;
   FILE *outfile = fopen("Fcntl.pm", "a");
   fprintf(outfile, "\n");

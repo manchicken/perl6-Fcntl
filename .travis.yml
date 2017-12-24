@@ -7,8 +7,12 @@ os:
 perl6:
   - latest
 
-sudo: true
+sudo: false
 
 install:
   - rakudobrew build zef
-  - zef install .
+  - zef --verbose build .
+
+script:
+  - AUTHOR_TESTING=1 prove -ve "perl6 -Ilib"
+  - zef --verbose install .
