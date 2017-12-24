@@ -15,6 +15,6 @@ install:
 
 script:
   - echo "ABOUT TO RUN TESTS!!! $TRAVIS_BUILD_DIR $DYLD_FALLBACK_LIBRARY_PATH $PWD"
-  - ls -ltr $TRAVIS_BUILD_DIR/resources/lib
+  - find $TRAVIS_BUILD_DIR -type f
   - AUTHOR_TESTING=1 prove -ve "perl6 -Ilib"
   - zef --verbose install .
