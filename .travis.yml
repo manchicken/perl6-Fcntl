@@ -14,5 +14,6 @@ install:
   - zef --verbose build .
 
 script:
+  - echo "ABOUT TO RUN TESTS!!! $TRAVIS_BUILD_DIR $DYLD_FALLBACK_LIBRARY_PATH"
   - AUTHOR_TESTING=1 prove -ve "perl6 -Ilib"
   - zef --verbose install .
