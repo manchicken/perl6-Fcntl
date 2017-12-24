@@ -11,9 +11,9 @@ sudo: false
 
 install:
   - rakudobrew build zef
-  - zef --verbose build .
 
 script:
+  - zef --verbose build .
   - echo "ABOUT TO RUN TESTS!!! $TRAVIS_BUILD_DIR $DYLD_FALLBACK_LIBRARY_PATH $PWD"
   - find $TRAVIS_BUILD_DIR -type f
   - AUTHOR_TESTING=1 prove -ve "perl6 -Ilib"
