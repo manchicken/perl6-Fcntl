@@ -15,6 +15,7 @@ install:
   - zef --depsonly install .
   - zef --verbose build .
   - echo "ABOUT TO RUN TESTS!!! $TRAVIS_BUILD_DIR $DYLD_FALLBACK_LIBRARY_PATH $PWD"
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then locate libjust-for-tests.dylib; fi
   - find $TRAVIS_BUILD_DIR -type f
   - AUTHOR_TESTING=1 prove -ve "perl6 -Ilib -Iresources/lib"
   - zef --verbose install .
