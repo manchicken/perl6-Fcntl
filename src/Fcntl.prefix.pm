@@ -59,4 +59,4 @@ See L<perlfunc/stat> about the S_I* constants.
 
 =end pod
 
-unit module Fcntl:ver<0.1.0>:auth<github:manchicken)>;
+unit module Fcntl:ver<0.0.1>:auth<github:manchicken>;
