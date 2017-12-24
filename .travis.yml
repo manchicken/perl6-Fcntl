@@ -10,6 +10,7 @@ perl6:
 sudo: false
 
 install:
+  - uname -a
   - rakudobrew build zef
   - zef --depsonly install .
   - zef --verbose build .

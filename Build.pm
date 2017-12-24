@@ -23,7 +23,7 @@ class Build {
           mkdir $dir-to-make;
         }
 
-        for <resources/lib libjustfortests resources/bin P6-Fcntl> -> $dir, $obj {
+        for <resources/lib libjust-for-tests resources/bin P6-Fcntl> -> $dir, $obj {
           make($workdir, $dir, :outname($obj));
         }
     }
