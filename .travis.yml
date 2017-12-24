@@ -11,8 +11,6 @@ sudo: false
 
 install:
   - rakudobrew build zef
-
-script:
   - zef --verbose build .
   - echo "ABOUT TO RUN TESTS!!! $TRAVIS_BUILD_DIR $DYLD_FALLBACK_LIBRARY_PATH $PWD"
   - find $TRAVIS_BUILD_DIR -type f
