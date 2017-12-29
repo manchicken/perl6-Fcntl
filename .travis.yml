@@ -9,10 +9,6 @@ perl6:
 
 sudo: false
 
-cache:
-  directories:
-    - ~/.rakudobrew
-
 install:
   - uname -a
   - rakudobrew build zef
