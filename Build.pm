@@ -26,6 +26,7 @@ class Build {
         for <resources/lib libjust-for-tests resources/bin P6-Fcntl> -> $dir, $obj {
           make($workdir, $dir, :outname($obj));
         }
+        True;
     }
 }
 
