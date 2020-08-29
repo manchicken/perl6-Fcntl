@@ -12,3 +12,7 @@ nytprof.out
 resources
 lib/Fcntl.pm
 src/P6-Fcntl
+
+.vstags
+
+lib/Fcntl.pm6

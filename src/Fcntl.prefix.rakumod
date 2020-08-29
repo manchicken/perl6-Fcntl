@@ -60,3 +60,9 @@ See L<perlfunc/stat> about the S_I* constants.
 =end pod
 
 unit module Fcntl:ver<0.0.1>:auth<github:manchicken>;
+use NativeCall;
+
+sub impl_S_ISREG(int32 --> int8) is native('fcntl') {*}
+sub S_ISREG(Int :$mode) is export(:S_ISREG) {
+  return impl_S_ISREG($mode);
+}
