@@ -1,10 +1,10 @@
 SRC=src
 LD=-lc
-all : bin lib pm
+all : bin lib rakumod
 
 bin : resources/bin/P6-Fcntl%EXE%
-lib : resources/lib/libjust-for-tests%SO%
-pm : lib/Fcntl.pm
+lib : resources/lib/libfcntl%SO% resources/lib/libjust-for-tests%SO%
+rakumod : lib/Fcntl.rakumod
 
 resources/bin/P6-Fcntl%EXE% : $(SRC)/P6-Fcntl.c
 	%CC% -I $(SRC) %CCFLAGS% %CCOUT%resources/bin/P6-Fcntl%EXE% $(SRC)/P6-Fcntl.c
@@ -16,22 +16,34 @@ resources/lib/libjust-for-tests%SO% : $(SRC)/just-for-tests%O% $(SRC)/P6-Fcntl%O
 		$(SRC)/P6-Fcntl%O% \
 		$(LD)
 
+resources/lib/libfcntl%SO% : $(SRC)/fcntl%O%
+	%LD% %LDSHARED% -v %LDFLAGS% \
+		%LDOUT%resources/lib/libfcntl%SO% \
+		$(SRC)/fcntl%O% \
+		$(LD)
+
+$(SRC)/fcntl%O% : $(SRC)/fcntl.c
+	%CC% -I $(SRC) -v -c %CCSHARED% %CCFLAGS% %CCOUT%$(SRC)/fcntl%O% $(SRC)/fcntl.c
+
 $(SRC)/just-for-tests%O% : $(SRC)/just-for-tests.c $(SRC)/P6-Fcntl.c
 	%CC% -I $(SRC) -v -c %CCSHARED% %CCFLAGS% %CCOUT%$(SRC)/just-for-tests%O% $(SRC)/just-for-tests.c
 	%CC% -I $(SRC) -v -c %CCSHARED% %CCFLAGS% %CCOUT%$(SRC)/P6-Fcntl%O% $(SRC)/P6-Fcntl.c
 
-lib/Fcntl.pm : src/Fcntl.prefix.pm resources/bin/P6-Fcntl%EXE%
-	@cp src/Fcntl.prefix.pm Fcntl.pm
+lib/Fcntl.rakumod : src/Fcntl.prefix.rakumod resources/bin/P6-Fcntl%EXE%
+	@cp src/Fcntl.prefix.rakumod Fcntl.rakumod
 	resources/bin/P6-Fcntl%EXE%
-	@mv Fcntl.pm lib/Fcntl.pm
+	@mv Fcntl.rakumod lib/Fcntl.rakumod
 
 test : all
 	@prove -e"perl6 -I lib" -v t
 
 clean :
-	@rm -f $(SRC)/*.o
+	@rm -f $(SRC)/*%O%
 	@rm -f resources/bin/P6-Fcntl%EXE%
 	@rm -f resources/lib/libsimplestruct%SO%
+	@rm -f resources/lib/libjust-for-tests%SO%
+	@rm -f lib/Fcntl.rakumod
+	@rm -f $(SRC)/just-for-tests%O%
 
 realclean : clean
 	@rm -f Makefile

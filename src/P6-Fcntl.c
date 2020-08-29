@@ -1320,7 +1320,7 @@ struct definition_pair definitions[] = {
 
 int main() {
   struct definition_pair *one = definitions;
-  FILE *outfile = fopen("Fcntl.pm", "a");
+  FILE *outfile = fopen("Fcntl.rakumod", "a");
   fprintf(outfile, "\n");
 
   while ( one->const_name != NULL ) {
